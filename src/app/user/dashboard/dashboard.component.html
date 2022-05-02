@@ -18,8 +18,11 @@
 </nav>
 <div class="row">
   <div class="col-md-2 side-panel">
+    <div class="m-2">
+      <input (keyup)="searchProduct($event)" type="text" placeholder="Search product" class="form-control"/>
+    </div>
     <div *ngFor="let category of categoryList">
-      <p class="pl-2">{{category.categoryName}}</p>
+      <p style="cursor: pointer;" (click)="getProductOfCategory(category._id)" class="pl-2">{{category.categoryName}}</p>
       <hr>
     </div>
   </div>

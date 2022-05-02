@@ -11,12 +11,17 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { TokenInterceptorService } from './interceptor/token-interceptor.service';
 import { ProductListComponent } from './user/product-list/product-list.component';
+import { CacheInterceptorService } from './interceptor/cache-interceptor.service';
+import { ProductByCategoryComponent } from './user/product-by-category/product-by-category.component';
+import { SearchProductComponent } from './user/search-product/search-product.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductByCategoryComponent,
+    SearchProductComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,10 @@ import { ProductListComponent } from './user/product-list/product-list.component
   ],
   providers: [{
     useClass: TokenInterceptorService,
+    provide: HTTP_INTERCEPTORS,
+    multi: true
+  },{
+    useClass: CacheInterceptorService,
     provide: HTTP_INTERCEPTORS,
     multi: true
   }],
